@@ -2,7 +2,10 @@
 using Microsoft.Extensions.Options;
 using ReqresUserLibrary.Configuration;
 using ReqresUserLibrary.Models;
+using ReqresUserLibrary.Services;
+using System.Net;
 using System.Net.Http.Json;
+using System.Text.Json;
 
 namespace ReqresUserLibrary.Clients
 {
@@ -18,10 +21,20 @@ namespace ReqresUserLibrary.Clients
                 var response = await _httpClient.GetFromJsonAsync<ApiUserResponse>($"{_baseUrl}/users/{userId}");
                 return response?.Data;
             }
+            catch (JsonException ex)
+            {
+                logger.LogError(ex, "Deserialization failed for userId {UserId}", userId);
+                throw new ExternalServiceException("Deserialization failed", ex);
+            }
+            catch (TaskCanceledException ex) when (!ex.CancellationToken.IsCancellationRequested)
+            {
+                logger.LogError(ex, "Request timed out");
+                throw new ExternalServiceException("Request timed out", ex);
+            }
             catch (Exception ex)
             {
-                logger.LogError(ex, "Failed to get user by ID");
-                return null;
+                logger.LogError(ex, "Unhandled exception in GetUserByIdAsync");
+                throw new ExternalServiceException("Unexpected failure", ex);
             }
         }
 
@@ -31,10 +44,20 @@ namespace ReqresUserLibrary.Clients
             {
                 return await _httpClient.GetFromJsonAsync<PaginatedUsersDto>($"{_baseUrl}/users?page={page}");
             }
+            catch (JsonException ex)
+            {
+                logger.LogError(ex, "Deserialization failed for users");
+                throw new ExternalServiceException("Deserialization failed", ex);
+            }
+            catch (TaskCanceledException ex) when (!ex.CancellationToken.IsCancellationRequested)
+            {
+                logger.LogError(ex, "Request timed out");
+                throw new ExternalServiceException("Request timed out", ex);
+            }
             catch (Exception ex)
             {
-                logger.LogError(ex, "Failed to get users by page");
-                return null;
+                logger.LogError(ex, "Unhandled exception in GetUsersByPageAsync");
+                throw new ExternalServiceException("Unexpected failure", ex);
             }
         }
 

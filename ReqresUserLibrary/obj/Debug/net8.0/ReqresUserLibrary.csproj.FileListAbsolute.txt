@@ -10,3 +10,16 @@ C:\Users\md\source\repos\ReqresUserLibrary\ReqresUserLibrary\obj\Debug\net8.0\Re
 C:\Users\md\source\repos\ReqresUserLibrary\ReqresUserLibrary\obj\Debug\net8.0\refint\ReqresUserLibrary.dll
 C:\Users\md\source\repos\ReqresUserLibrary\ReqresUserLibrary\obj\Debug\net8.0\ReqresUserLibrary.pdb
 C:\Users\md\source\repos\ReqresUserLibrary\ReqresUserLibrary\obj\Debug\net8.0\ref\ReqresUserLibrary.dll
+C:\Users\md\source\repos\Reqres-User-Integration-Library\ReqresUserLibrary\bin\Debug\net8.0\ReqresUserLibrary.deps.json
+C:\Users\md\source\repos\Reqres-User-Integration-Library\ReqresUserLibrary\bin\Debug\net8.0\ReqresUserLibrary.dll
+C:\Users\md\source\repos\Reqres-User-Integration-Library\ReqresUserLibrary\bin\Debug\net8.0\ReqresUserLibrary.pdb
+C:\Users\md\source\repos\Reqres-User-Integration-Library\ReqresUserLibrary\obj\Debug\net8.0\ReqresUserLibrary.csproj.AssemblyReference.cache
+C:\Users\md\source\repos\Reqres-User-Integration-Library\ReqresUserLibrary\obj\Debug\net8.0\ReqresUserLibrary.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\md\source\repos\Reqres-User-Integration-Library\ReqresUserLibrary\obj\Debug\net8.0\ReqresUserLibrary.AssemblyInfoInputs.cache
+C:\Users\md\source\repos\Reqres-User-Integration-Library\ReqresUserLibrary\obj\Debug\net8.0\ReqresUserLibrary.AssemblyInfo.cs
+C:\Users\md\source\repos\Reqres-User-Integration-Library\ReqresUserLibrary\obj\Debug\net8.0\ReqresUserLibrary.csproj.CoreCompileInputs.cache
+C:\Users\md\source\repos\Reqres-User-Integration-Library\ReqresUserLibrary\obj\Debug\net8.0\ReqresUserLibrary.sourcelink.json
+C:\Users\md\source\repos\Reqres-User-Integration-Library\ReqresUserLibrary\obj\Debug\net8.0\ReqresUserLibrary.dll
+C:\Users\md\source\repos\Reqres-User-Integration-Library\ReqresUserLibrary\obj\Debug\net8.0\refint\ReqresUserLibrary.dll
+C:\Users\md\source\repos\Reqres-User-Integration-Library\ReqresUserLibrary\obj\Debug\net8.0\ReqresUserLibrary.pdb
+C:\Users\md\source\repos\Reqres-User-Integration-Library\ReqresUserLibrary\obj\Debug\net8.0\ref\ReqresUserLibrary.dll

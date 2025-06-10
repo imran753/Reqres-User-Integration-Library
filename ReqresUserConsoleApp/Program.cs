@@ -2,6 +2,8 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
+using Polly;
+using Polly.Extensions.Http;
 using ReqresUserLibrary.Clients;
 using ReqresUserLibrary.Configuration;
 using ReqresUserLibrary.Services;
@@ -13,13 +15,19 @@ var host = Host.CreateDefaultBuilder()
     })
     .ConfigureServices((context, services) =>
     {
+        services.AddOptions<ReqresApiOptions>()
+        .Bind(context.Configuration.GetSection("ReqresApi"))
+        .Validate(opt => !string.IsNullOrEmpty(opt.BaseUrl), "BaseUrl is required")
+        .Validate(opt => !string.IsNullOrEmpty(opt.ApiKey), "ApiKey is required");
         services.Configure<ReqresApiOptions>(context.Configuration.GetSection("ReqresApi"));
         services.AddHttpClient<IReqresApiClient, ReqresApiClient>((sp, client) =>
         {
             var config = sp.GetRequiredService<IOptions<ReqresApiOptions>>().Value;
             client.BaseAddress = new Uri(config.BaseUrl);
             client.DefaultRequestHeaders.Add("x-api-key", config.ApiKey);
-        });
+        }).AddPolicyHandler(HttpPolicyExtensions
+        .HandleTransientHttpError()
+        .WaitAndRetryAsync(3, retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt))));
         services.AddMemoryCache();
         services.AddScoped<IExternalUserService, ExternalUserService>();
     })
